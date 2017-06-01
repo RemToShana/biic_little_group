@@ -97,7 +97,7 @@ testX=vectorizer.transform(jieout_art[15000:16500])
 
 #tri=vectorizer.transform(jieout[0])
 #print tfidf.shape
-
+''' 暫時別用
 print('train')
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import SGDClassifier
@@ -110,10 +110,11 @@ y_predicted = text_clf.predict(test_X)
 import numpy as np
 ACU=np.mean(y_predicted == test_Y) 
 print ('acu:',ACU)
+'''
 #################################################################################
 from sklearn import feature_selection
-best_C=0.5
-best_percent=0.7
+best_C=0.5 # 10 5 1 0.5 0.1 0.01
+best_percent=0.7 #feature留幾趴
 machine=LinearSVC(C=best_C, penalty="l1", dual=False,class_weight = 'balanced');
 fs=feature_selection.SelectPercentile(feature_selection.f_classif, percentile = best_percent).fit(trainX, train_Y)            
 trainX=fs.transform(trainX)
